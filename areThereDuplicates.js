@@ -16,4 +16,4 @@ function areThereDuplicates(...args) {
 
 }
 
-console.log(areThereDuplicates(3, 4, 5, 6));
+// console.log(areThereDuplicates(3, 4, 5, 6));
