@@ -32,5 +32,5 @@ function binarySearch2(arr, el) {
  return -1;
 }
 
-console.log(binarySearch2([1, 3, 4, 7, 8, 9], 3));
+// console.log(binarySearch2([1, 3, 4, 7, 8, 9], 3));
 // console.log('hi');
