@@ -19,7 +19,7 @@ class SinglyLinkedList {
   this.length = 0;
  }
  push(val) {
-  const newNode = new Node(value);
+  const newNode = new Node(val);
   if (!this.head) {
    this.head = newNode;
    this.tail = this.head;
@@ -31,3 +31,10 @@ class SinglyLinkedList {
   return this;
  }
 }
+
+
+const list = new SinglyLinkedList();
+
+list.push('HEYYYYY');
+list.push('ASHLEY');
+console.log(list);
