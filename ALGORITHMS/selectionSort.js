@@ -13,11 +13,10 @@ function selectionSort(arr) {
   }
   if (i !== lowest) {
    swap(arr, i, lowest);
-   console.log('swapped:', arr[i], arr[lowest]);
   }
 
  }
  return arr;
 }
 
-console.log(selectionSort([1, 2, 19, 18, 17]));
+// console.log(selectionSort([1, 2, 19, 18, 17]));
