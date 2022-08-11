@@ -104,9 +104,9 @@ class SinglyLinkedList {
  }
 
  insert(idx, value) {
-  if (idx < 0 || idx > idx.length) return false;
-  if (idx === this.length) return this.addToTail(value);
-  if (idx === 0) return this.addToHead(value);
+  if (idx < 0 || idx > this.length) return false;
+  if (idx === 0) return !!this.addToHead(value);
+  if (idx === this.length) return !!this.addToTail(value);
 
   let node = new Node(value);
   let prev = this.get(idx - 1);
