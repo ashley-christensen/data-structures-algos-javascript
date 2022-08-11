@@ -18,14 +18,15 @@ class SinglyLinkedList {
   this.tail = null;
   this.length = 0;
  }
- push(val) {
-  const newNode = new Node(val);
+
+ addToTail(val) {
+  const node = new Node(val);
   if (!this.head) {
-   this.head = newNode;
+   this.head = node;
    this.tail = this.head;
   } else {
-   this.tail.next = newNode;//put new node at end
-   this.tail = newNode;//make the tail the new node
+   this.tail.next = node;
+   this.tail = node;
   }
   this.length++;
   return this;
@@ -38,7 +39,7 @@ class SinglyLinkedList {
   }
  }
 
- pop() {
+ removeFromTail() {
   if (!this.head) return undefined;
   if (this.length === 1) {
    this.head = null;
@@ -56,7 +57,30 @@ class SinglyLinkedList {
   this.tail.next = null;
   this.length--;
   return current;
+ }
 
+ removeFromHead() {
+  if (!this.head) return undefined;
+  let current = this.head;
+  this.head = current.next;
+  this.length--;
+  if (this.length === 0) {
+   this.tail = null;
+  }
+  return current;
+ }
+
+ addToHead(val) {
+  let node = new Node(val);
+  if (!this.head) {
+   this.head = node;
+   this.tail = this.head;
+  } else {
+   node.next = this.head;
+   this.head = node;
+   this.length++;
+   return this;
+  }
  }
 
 }
@@ -65,9 +89,7 @@ const list = new SinglyLinkedList();
 list.push('HEYYYYY');
 list.push('ASHLEY');
 list.push('WHATSUP');
-list.push('1');
-list.push('2');
+console.log(list.addToHead("1st item"));
 console.log(list);
-list.pop();
-console.log(list);
+
 
