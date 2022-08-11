@@ -83,13 +83,25 @@ class SinglyLinkedList {
   }
  }
 
+ get(idx) {
+  if (idx < 0 || idx >= this.length) return null;
+  let count = 0;
+  let current = this.head;
+  while (count !== idx) {
+   current = current.next;
+   count++;
+  }
+  return current;
+ }
+
 }
 const list = new SinglyLinkedList();
 
-list.push('HEYYYYY');
-list.push('ASHLEY');
-list.push('WHATSUP');
-console.log(list.addToHead("1st item"));
-console.log(list);
+list.addToTail('ashley0');
+list.addToTail('ashley1');
+list.addToTail('ashley2');
+list.addToTail('ashley3');
+list.addToTail('ashley4');
+console.log(list.get(4));
 
 
