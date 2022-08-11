@@ -115,9 +115,29 @@ class SinglyLinkedList {
   node.next = temp;
   this.length++;
   return true;
+ }
+
+ remove(idx) {
+  if (idx < 0 || idx >= this.length) return undefined;
+  if (idx === 0) return this.removeFromHead();
+  if (idx === this.length - 1) return this.removeFromTail();
+
+  let prev = this.get(idx - 1);
+  let removed = prev.next;
+  prev.next = removed.next;
+  this.length--;
+  return removed;
+ }
+
+ reverse() {
 
  }
+
+
+
+
 }
+
 
 const list = new SinglyLinkedList();
 
@@ -126,8 +146,9 @@ list.addToTail('ashley1');
 list.addToTail('ashley2');
 list.addToTail('ashley3');
 list.addToTail('ashley4');
-list.insert(3, 'is this the third?');
-console.log(list.get(3));
-console.log(list.get(4));
+console.log(list.remove(0));
+
+
+
 
 
