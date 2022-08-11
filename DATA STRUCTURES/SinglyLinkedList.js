@@ -94,7 +94,31 @@ class SinglyLinkedList {
   return current;
  }
 
+ set(idx, value) {
+  let foundNode = this.get(idx);
+  if (foundNode) {
+   foundNode.val = value;
+   return true;
+  }
+  return false;
+ }
+
+ insert(idx, value) {
+  if (idx < 0 || idx > idx.length) return false;
+  if (idx === this.length) return this.addToTail(value);
+  if (idx === 0) return this.addToHead(value);
+
+  let node = new Node(value);
+  let prev = this.get(idx - 1);
+  let temp = prev.next;
+  prev.next = node;
+  node.next = temp;
+  this.length++;
+  return true;
+
+ }
 }
+
 const list = new SinglyLinkedList();
 
 list.addToTail('ashley0');
@@ -102,6 +126,8 @@ list.addToTail('ashley1');
 list.addToTail('ashley2');
 list.addToTail('ashley3');
 list.addToTail('ashley4');
+list.insert(3, 'is this the third?');
+console.log(list.get(3));
 console.log(list.get(4));
 
 
