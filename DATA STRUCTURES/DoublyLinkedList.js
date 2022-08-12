@@ -117,12 +117,29 @@ class DoublyLinkedList {
   this.length++;
   return true;
  }
+
+ remove(idx) {
+  if (idx < 0 || idx >= this.length) return null;
+  if (idx === 0) return this.removeFromHead();
+  if (idx === this.length - 1) return this.removeFromTail();
+
+  let removedNode = this.get(idx);
+  let beforeNode = removedNode.prev;
+  let afterNode = removedNode.next;
+  beforeNode.next = afterNode;
+  afterNode.prev = beforeNode;
+  // removedNode.prev.next = removedNode.next;
+  // removedNode.next.prev = removedNode.prev;
+  removedNode.next = null, removedNode.prev = null;
+  this.length--;
+  return removedNode;
+ }
 }
 
 const list = new DoublyLinkedList();
 list.addToTail('double1');
 list.addToTail('double2');
 list.addToTail('double3');
-list.insert(1, 'inserted at 1');
+console.log(list.remove(0));
 
-console.log(list);
+// console.log(list);
