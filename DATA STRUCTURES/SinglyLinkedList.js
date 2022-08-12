@@ -7,7 +7,6 @@ class Node {
   this.next = null;
  }
 }
-
 class SinglyLinkedList {
  constructor() {
   this.head = null;

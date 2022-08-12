@@ -5,7 +5,6 @@ class Node {
   this.prev = null;
  }
 }
-
 class DoublyLinkedList {
  constructor() {
   this.head = null;
@@ -33,10 +32,11 @@ class DoublyLinkedList {
   if (this.length === 1) {
    this.head = null;
    this.tail = null;
+  } else {
+   this.tail = poppedNode;
+   this.tail.next = null;
+   poppedNode.prev = null;
   }
-  this.tail = poppedNode;
-  this.tail.next = null;
-  poppedNode.prev = null;
   this.length--;
   return poppedNode;
  }
@@ -47,22 +47,14 @@ class DoublyLinkedList {
   if (this.length === 1) {
    this.head = null;
    this.tail = null;
+  } else {
+   this.head = oldHead.next;
+   this.head.prev = null;
+   oldHead.next = null;
   }
-  this.head = oldHead.next;
-  this.head.prev = null;
-  oldHead.next = null;
   this.length--;
   return oldHead;
-
  }
- //  if (!this.head) return undefined;
- //  let head = this.head;
- //  this.head = this.head.next;
- //  head.prev = null;
- //  this.length--;
- //  return head;
- // }
-
 
 }
 
@@ -71,4 +63,4 @@ list.addToTail('double1');
 list.addToTail('double2');
 list.addToTail('double3');
 console.log(list.removeFromHead());
-console.log(list.length);
+// console.log(list.length);
