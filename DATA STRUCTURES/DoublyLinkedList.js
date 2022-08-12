@@ -14,17 +14,17 @@ class DoublyLinkedList {
  }
 
  addToTail(val) {
-  let newNode = new Node(val);
+  const node = new Node(val);
   if (!this.head) {
-   this.head = newNode;
-   this.tail = newNode;
-  } else {
-   this.tail.next = newNode;
-   newNode.prev = this.tail;//set the .prev from new node back to old tail
-   this.tail = newNode;//update tail to be new node.\
-   this.length++;
-   return this;
+   this.head = node;
+   this.tail = node;
   }
+  this.tail.next = node;
+  node.prev = this.tail;
+  this.tail = node;
+  this.length++;
+  return this;
+
  }
 
  removeFromTail() {
@@ -34,22 +34,19 @@ class DoublyLinkedList {
    this.head = null;
    this.tail = null;
   }
-
-  this.tail = poppedNode.prev;
+  this.tail = poppedNode;
   this.tail.next = null;
   poppedNode.prev = null;
-
   this.length--;
   return poppedNode;
-
-
-
  }
+
+
 }
 
 const list = new DoublyLinkedList();
-list.addToTail(99);
-list.addToTail(98);
-list.addToTail(97);
-console.log(list.removeFromTail());
-// console.log(list);
+list.addToTail('double1');
+list.addToTail('double2');
+list.addToTail('double3');
+list.removeFromTail();
+console.log(list.length);

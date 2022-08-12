@@ -8,10 +8,6 @@ class Node {
  }
 }
 
-// const first = new Node('HI');
-// first.next = new Node('THERE');
-// first.next.next = new Node('ashley')
-// console.log(first);
 class SinglyLinkedList {
  constructor() {
   this.head = null;
@@ -31,6 +27,7 @@ class SinglyLinkedList {
   this.length++;
   return this;
  }
+
 
  traverse() {
   let current = this.head;
@@ -71,20 +68,21 @@ class SinglyLinkedList {
  }
 
  addToHead(val) {
-  let node = new Node(val);
+  const node = new Node(val);
   if (!this.head) {
    this.head = node;
    this.tail = this.head;
   } else {
    node.next = this.head;
    this.head = node;
-   this.length++;
-   return this;
   }
+  this.length++;
+  return this;
  }
 
  get(idx) {
   if (idx < 0 || idx >= this.length) return null;
+
   let count = 0;
   let current = this.head;
   while (count !== idx) {
@@ -103,16 +101,17 @@ class SinglyLinkedList {
   return false;
  }
 
- insert(idx, value) {
-  if (idx < 0 || idx > this.length) return false;
-  if (idx === 0) return !!this.addToHead(value);
-  if (idx === this.length) return !!this.addToTail(value);
 
-  let node = new Node(value);
+ insert(idx, value) {
+  if (idx < 0 || idx >= this.length) return false;
+  if (idx === 0) return !!this.addToHead(value);
+  if (idx === this.length - 1) return !!this.addToTail(value);
+
+  const newNode = new Node(value);
   let prev = this.get(idx - 1);
   let temp = prev.next;
-  prev.next = node;
-  node.next = temp;
+  prev.next = newNode;
+  newNode.next = temp;
   this.length++;
   return true;
  }
@@ -129,12 +128,9 @@ class SinglyLinkedList {
   return removed;
  }
 
+
  reverse() {
-
  }
-
-
-
 
 }
 
@@ -146,7 +142,7 @@ list.addToTail('ashley1');
 list.addToTail('ashley2');
 list.addToTail('ashley3');
 list.addToTail('ashley4');
-console.log(list.remove(0));
+console.log(list.remove(1));
 
 
 
