@@ -41,6 +41,28 @@ class DoublyLinkedList {
   return poppedNode;
  }
 
+ removeFromHead() {
+  if (!this.head) return undefined;
+  let oldHead = this.head;
+  if (this.length === 1) {
+   this.head = null;
+   this.tail = null;
+  }
+  this.head = oldHead.next;
+  this.head.prev = null;
+  oldHead.next = null;
+  this.length--;
+  return oldHead;
+
+ }
+ //  if (!this.head) return undefined;
+ //  let head = this.head;
+ //  this.head = this.head.next;
+ //  head.prev = null;
+ //  this.length--;
+ //  return head;
+ // }
+
 
 }
 
@@ -48,5 +70,5 @@ const list = new DoublyLinkedList();
 list.addToTail('double1');
 list.addToTail('double2');
 list.addToTail('double3');
-list.removeFromTail();
+console.log(list.removeFromHead());
 console.log(list.length);
