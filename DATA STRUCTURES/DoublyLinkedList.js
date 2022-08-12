@@ -17,10 +17,12 @@ class DoublyLinkedList {
   if (!this.head) {
    this.head = node;
    this.tail = node;
+  } else {
+   this.tail.next = node;
+   node.prev = this.tail;
+   this.tail = node;
   }
-  this.tail.next = node;
-  node.prev = this.tail;
-  this.tail = node;
+
   this.length++;
   return this;
 
@@ -74,7 +76,6 @@ class DoublyLinkedList {
   if (idx < 0 || idx >= this.length) return undefined;
   let count, current;
   if (idx <= this.length / 2) {
-
    current = this.head;
    count = 0;
    while (count !== idx) {
@@ -145,15 +146,3 @@ console.log(list.remove(0));
 // console.log(list);
 
 
-function push(val) {
- let node = new Node(val);
- if (!this.head) {
-  this.head = node;
-  this.tail = this.head;
- }
-
- this.tail.next = node;
- node.prev = this.tail;
- this.tail = node;
- node.next = null;
-}
