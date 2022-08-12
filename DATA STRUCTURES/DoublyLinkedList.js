@@ -56,11 +56,50 @@ class DoublyLinkedList {
   return oldHead;
  }
 
+ addToHead(val) {
+  const node = new Node(val);
+  if (!this.head) {
+   this.head = node;
+   this.tail = node;
+  } else {
+   this.head.prev = node;
+   node.next = this.head;
+   this.head = node;
+  }
+  this.length++;
+  return this;
+ }
+
+ get(idx) {
+  if (idx < 0 || idx >= this.length) return undefined;
+  if (idx <= this.length / 2) {
+   console.log('working from start');
+   let current = this.head;
+   let count = 0;
+   while (count !== idx) {
+    current = current.next;
+    count++;
+   }
+   return current;
+  } else {
+   console.log('working from end');
+   let current = this.tail;
+   let count = this.length - 1;
+   while (count !== idx) {
+    current = current.prev;
+    count--;
+   }
+   return current;
+  }
+ }
+
 }
 
 const list = new DoublyLinkedList();
 list.addToTail('double1');
 list.addToTail('double2');
 list.addToTail('double3');
-console.log(list.removeFromHead());
-// console.log(list.length);
+list.addToHead('double0');
+list.addToTail('double4');
+
+console.log(list.get(3));
