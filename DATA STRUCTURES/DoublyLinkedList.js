@@ -102,11 +102,27 @@ class DoublyLinkedList {
   return false;
  }
 
+ insert(idx, value) {
+  const newNode = new Node(value);
+  if (idx < 0 || idx >= this.length) return false;
+  if (idx === 0) return !!this.addToHead(value);
+  if (idx === this.length - 1) return !!this.addToTail(value);
+
+  let beforeNode = this.get(idx - 1);
+  let afterNode = beforeNode.next;//make third variable
+
+  //setup 4 connections. 2 to current, one for each connecting to current 
+  beforeNode.next = newNode, newNode.prev = beforeNode;
+  newNode.next = afterNode, afterNode.prev = newNode;
+  this.length++;
+  return true;
+ }
 }
 
 const list = new DoublyLinkedList();
 list.addToTail('double1');
 list.addToTail('double2');
 list.addToTail('double3');
+list.insert(1, 'inserted at 1');
 
-console.log(list.set(0, 'zero'));
+console.log(list);
