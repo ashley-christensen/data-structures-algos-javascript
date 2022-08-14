@@ -131,19 +131,126 @@ class SinglyLinkedList {
  reverse() {
  }
 
+ insert2(idx, val) {
+  let node = new Node(val);
+  if (idx < 0 || idx >= this.length) return false;
+  if (idx === 0) return !!this.addToHead2(val);
+  if (idx === this.length) return !!this.addToTail2(val);
+
+  let beforeNode = this.get(idx - 1);
+  let afterNode = prev.next;
+  beforeNode.next = node;
+  node.next = afterNode;
+
+  this.length++;
+  return true;
+ }
+
+ remove2(idx) {
+  if (idx < 0 || idx >= this.length) return undefined;
+  if (idx === 0) return this.removeFromHead2();
+  if (idx === this.length - 1) return this.removeFromTail2();
+  let prev = this.get(idx - 1);
+  let removed = prev.next;
+  let afterNode = removed.next;
+  prev.next = afterNode;
+  this.length--;
+  return removed;
+ }
+
+ get2(idx) {
+  if (idx < 0 || idx >= this.length) return undefined;
+
+  let count = 0;
+  let current = this.head;
+
+  while (count !== idx) {
+   current = current.next;
+   count++;
+  }
+  return current;
+ }
+
+ addToTail2(val) {
+  let node = new Node(val);
+  if (!this.head) {
+   this.head = node;
+   this.tail = this.head;
+  } else {
+   this.tail.next = node;
+   this.tail = node;
+  }
+  this.length++;
+  return this;
+ }
+
+ removeFromTail2() {
+  if (!this.head) return undefined;
+  if (this.length === 1) {
+   this.head = null;
+   this.tail = null;
+  }
+  // ??^
+  let newTail = this.head;
+  let current = this.head;
+  while (current.next) {
+   prev = current;
+   current = current.next;
+  }
+  this.tail = newTail;
+  newTail.next = null;
+  this.length--;
+  return current;
+
+ }
+
+ addToHead2(val) {
+  let node = new Node(val);
+  if (!this.head) {
+   this.head = node;
+   this.tail = this.head;
+  } else {
+   node.next = this.head;
+   this.head = node;
+  }
+  this.length++;
+  return this;
+ }
+
+ removeFromHead2() {
+  if (!this.head) return undefined;
+  let oldHead = this.head;
+  this.head = oldHead.next;
+  // oldHead.next = null;??
+  this.length--;
+  if (this.length === 0) {
+   this.tail = null;
+  }
+  // ??^
+  return oldHead;
+ }
+
 }
 
 
 const list = new SinglyLinkedList();
 
-list.addToTail('ashley0');
-list.addToTail('ashley1');
-list.addToTail('ashley2');
-list.addToTail('ashley3');
-list.addToTail('ashley4');
-console.log(list.remove(1));
+list.addToTail2('ashley0');
+list.addToTail2('ashley1');
+list.addToTail2('ashley2');
+list.addToTail2('ashley3');
+list.addToTail2('ashley4');
+list.insert2(0, 'this is double 0');
+console.log(list);
 
 
 
 
+// remove from tail
+//removefromhead2
 
+
+// remove from tail
+// while current.next, check for length of 1
+//removefromhead2
+//after decreasing length, if the last item was just taken out, tail needs to be set to null
