@@ -69,16 +69,7 @@ function reverseStr(str) {
 console.log(reverseStr('hello'));
 
 function isPalindrome(str) {
- let reverse = '';
 
- function helper(helperInput) {
-  if (helperInput.length === 0) return;
-  reverse = helperInput[0] + reverse;
-  helper(helperInput.slice(1));
- }
- helper(str);
- if (reverse === str) return true;
- return false;
 
 }
 

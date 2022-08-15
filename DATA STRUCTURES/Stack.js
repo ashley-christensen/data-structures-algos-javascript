@@ -22,42 +22,35 @@ class Stack {
   this.size = 0;
  }
 
- push(val) {
+ addToHead(val) {
   let node = new Node(val);
   if (!this.first) {
    this.first = node;
    this.last = node;
   } else {
-   this.last.next = node;
-   this.last = node;
+   node.next = this.first;
+   this.first = node;
   }
   this.size++;
-  return this.size;
+  return this;
+
  }
 
- pop() {
+ removeFromHead() {
   if (!this.first) return undefined;
-  if (this.length === 1) {
-   this.first = null;
+  if (this.length === 0) {
    this.last = null;
   }
-  let newLast = this.first;
-  let current = this.first;
-  while (current.next) {
-   newLast = current;
-   current = current.next;
-  }
-  this.last = newLast;
-  newLast.next = null;
+  let popped = this.first;
+  this.first = popped.next;
   this.size--;
-  return current;
-
+  return popped;
  }
 }
 
 let stack = new Stack();
-stack.push('hello');
-stack.push('how');
-stack.push('are');
-stack.push('you');
-console.log(stack.pop());
+stack.addToHead('you');
+stack.addToHead('are');
+stack.addToHead('how');
+stack.addToHead('hello');
+console.log(stack.removeFromHead());
