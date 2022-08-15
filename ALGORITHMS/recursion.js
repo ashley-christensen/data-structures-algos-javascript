@@ -65,17 +65,23 @@ function sliceQ(str) {
 // console.log(outerArr);
 
 
+
+
+// TO COMPILE AN ARRAY, OR SOME SORT OF DATA STRUCTURES
 function collectOddValues(arr) {
  let result = [];
 
  function helper(helperInput) {
-  if (helperInput.length === 0) return; //base case for the array
+  if (helperInput.length === 0) return; //BASE CASE for the array, EMPTY ARRAY just leave function, built what we need somewhere else so we don't need to return something at base
+
   console.log(helperInput);
   if (helperInput[0] % 2 !== 0) {//need to look at just one value in array, goal of entire method is to build result array by pushing onto it
-   result.push(helperInput[0]);//do something with value in array we just looked at
+   result.push(helperInput[0]);//COLLECT VALUES, do something with value in array we just looked at
   }
-  helper(helperInput.slice(1));//passes the rest of unexamined array, index 1 on, back into recursion
+
+  helper(helperInput.slice(1));//RECURSIVE passed subarraay whose values are unexamined still, index 1 on, back into recursive call 
  }
+
  helper(arr);//first call to recursive helper method to start recursion
  return `the result is: ${result}`;
 }
