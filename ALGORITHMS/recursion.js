@@ -49,4 +49,35 @@ function factorial3(num) {
 
 }
 
-console.log(factorial3(10));
+// console.log(factorial3(10));
+
+
+let outerArr = [];
+
+function sliceQ(str) {
+ if (str.length <= 1) return str;
+
+ outerArr.push(str);
+ return sliceQ(str.slice(2));
+}
+
+// sliceQ('abcdefg');
+// console.log(outerArr);
+
+
+function collectOddValues(arr) {
+ let result = [];
+
+ function helper(helperInput) {
+  if (helperInput.length === 0) return; //base case for the array
+  console.log(helperInput);
+  if (helperInput[0] % 2 !== 0) {//need to look at just one value in array, goal of entire method is to build result array by pushing onto it
+   result.push(helperInput[0]);//do something with value in array we just looked at
+  }
+  helper(helperInput.slice(1));//passes the rest of unexamined array, index 1 on, back into recursion
+ }
+ helper(arr);
+ return `the result is: ${result}`;
+}
+
+console.log(collectOddValues([1, 2, 3, 4, 5]));
