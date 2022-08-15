@@ -28,29 +28,30 @@ class Stack {
    this.first = node;
    this.last = node;
   } else {
-   node.next = this.first;
+   let current = this.first;
    this.first = node;
+   node.next = current;
+
   }
-  this.size++;
-  return this;
+  return ++this.size;
 
  }
 
  removeFromHead() {
-  if (!this.first) return undefined;
-  if (this.length === 0) {
-   this.last = null;
-  }
+  if (!this.first) return null;
   let popped = this.first;
+  if (this.first === this.last) {
+   this.last = null;//if one thing left and you take it off, must update "last" 
+  }
   this.first = popped.next;
   this.size--;
-  return popped;
+  return popped.val;//should return the value
  }
 }
 
 let stack = new Stack();
-stack.addToHead('you');
-stack.addToHead('are');
-stack.addToHead('how');
-stack.addToHead('hello');
+
+stack.addToHead('added to head first');
+stack.addToHead('added to head 2nd');
+stack.addToHead('added to head third');
 console.log(stack.removeFromHead());
