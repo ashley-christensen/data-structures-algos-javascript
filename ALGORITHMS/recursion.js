@@ -76,7 +76,7 @@ function collectOddValues(arr) {
   }
   helper(helperInput.slice(1));//passes the rest of unexamined array, index 1 on, back into recursion
  }
- helper(arr);
+ helper(arr);//first call to recursive helper method to start recursion
  return `the result is: ${result}`;
 }
 
