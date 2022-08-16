@@ -61,7 +61,7 @@ class SinglyLinkedList {
   this.head = current.next;
   this.length--;
   if (this.length === 0) {
-   this.tail = null;
+   this.tail = null;//update tail if taking last thing off list
   }
   return current;
  }
