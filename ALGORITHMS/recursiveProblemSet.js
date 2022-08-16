@@ -71,7 +71,7 @@ function reverse(str) {
 //reverse('') + y; '' + y = y
 //reverse('') this call to reverseStr and its input HITS our base case, move back up returns full return
 
-console.log((reverseStr('hello')));
+// console.log((reverse('hello')));
 
 function isPalindrome(str) {
  if (str.length === 1) return true;
@@ -79,5 +79,95 @@ function isPalindrome(str) {
  if (str[0] === str.slice(-1)) return isPalindrome(str.slice(1, -1));
  return false;
 }
+//t and t equal each other so ..
+//ispalindrome('acoca');true 
+//ispalindrome('coc');true
+//ispalindrome('o') true//
 
-// console.log(isPalindrome('ashley'));
+// console.log(isPalindrome('tacocat'));
+
+//Write a recursive function called someRecursive which accepts an array, and a callback. the function returns true if a single value in the array returns true when passed to the callback. otherwise it returns false;
+
+function someRecursive(arr, callback) {
+ if (arr <= 0) return true;
+ if (callback(arr[0])) return true;
+ someRecursive(arr.slice(1), callback);
+}
+
+function flatten(arr) {
+
+
+}
+
+function capitalizeFirst(arr) {
+ let newArr = [];
+
+ function helper(helperInput) {
+  if (helperInput.length === 0) return helperInput;
+
+  newArr.push(helperInput[0].charAt(0).toUpperCase() + helperInput[0].slice(1));
+
+  return helper(helperInput.slice(1));
+ }
+ helper(arr);
+ return newArr;
+
+
+}
+
+//['cat', 'dog', 'Hello'] => ['Cat', 'Dog', 'Hello']
+// console.log(capitalizeFirst(['dog', 'cat']));
+
+function capitalizeWords(arr) {
+ let newArr = [];
+
+ function helper(helperInput) {
+  if (helperInput.length === 0) return helperInput;
+  newArr.push(helperInput[0].toUpperCase());
+  helper(helperInput.slice(1));
+ }
+
+ helper(arr);
+ return newArr;
+}
+// console.log(capitalizeWords(['cat', 'ashley', 'will']));
+
+//write a function called prodOfArray() which takes an array of numbers and returns the product of them all
+
+function prodOfArray(arr) {
+ if (arr.length === 0) return 1;
+ return arr[0] * prodOfArray(arr.slice(1));
+}
+
+// console.log(prodOfArray([1, 2, 3]));
+
+function pow(base, exp) {
+ if (exp <= 0) return 1;
+ return base * pow(base, exp - 1);
+}
+
+// console.log(pow(2, 3));
+
+//write function called recursive range that given a number returns the sum of all numbers added from 0 to num
+function recRange(num) {
+ if (num === 0) return 0;
+ return num + recRange(num - 1);
+}
+
+// console.log(recRange(3));
+
+function rev(str) {
+ if (str.length === 1) return str;
+ return rev(str.slice(1)) + str[0];
+}
+
+// console.log(rev('ashley'));
+
+function isPal(str) {
+ if (str.length === 1) return true;
+ if (str.length === 2) return (str[0] === str[1]);
+ if (str[0] === str.slice(-1)) return isPal(str.slice(1, -1));
+ return false;
+}
+
+// console.log(isPal('tacocatt'));
