@@ -52,6 +52,7 @@ class BinarySearchTree {
   }
   return false;
  }
+
  contains2(val) {
   if (this.root === null) return false;
   let current = this.root;
@@ -69,6 +70,25 @@ class BinarySearchTree {
   }
   return false;
  }
+
+ find(val) {
+  if (this.root === null) return undefined;
+  let found = false;
+  let current = this.root;
+  while (current && !found) {
+   if (val < current.val) {
+    current = current.left;
+   }
+   else if (val > current.val) {
+    current = current.right;
+   } else {
+    found = true;
+   }
+
+  }
+  if (!found) return undefined;
+  return current;
+ }
 }
 
 
@@ -76,4 +96,4 @@ let tree = new BinarySearchTree();
 tree.insert(12);
 tree.insert(6);
 tree.insert(13);
-console.log(tree.contains(1));
+console.log(tree.find(7));
