@@ -34,12 +34,15 @@ class Queue {
  }
 
  dequeue() {//removeFromHead
-  if (!this.first) return undefined;
+  if (!this.first) return null;
+
   let removed = this.first;
-  let newFirst = removed.next;
-  this.first = newFirst;
+  if (this.first === this.last) {//if it's the last item, we work on head, need tail updated
+   this.last = null;
+  }
+  this.first = this.first.next;//first is now the net item in the q
   this.size--;
-  return removed;
+  return removed.val;
  }
 
 }
