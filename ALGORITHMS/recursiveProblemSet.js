@@ -60,17 +60,24 @@ function fib(num) {
 // console.log('solution', fib(7));
 
 
-function reverseStr(str) {
+function reverse(str) {
  if (str.length <= 1) return str;
- console.log(str);
- return reverseStr(str.slice(1)) + str[0];
+ return (reverse(str.slice(1))) + str[0];//stack returns these backwards
 }
+//reverse('appy') + h; yppa + h = yppah
+//reverse('ppy') + a;ypp + a = yppa
+//reverse('py') + p; yp + p = ypp
+//reverse('y') + p; y + p = yp
+//reverse('') + y; '' + y = y
+//reverse('') this call to reverseStr and its input HITS our base case, move back up returns full return
 
-console.log(reverseStr('hello'));
+console.log((reverseStr('hello')));
 
 function isPalindrome(str) {
-
-
+ if (str.length === 1) return true;
+ if (str.length === 2) return str[0] === str[1];
+ if (str[0] === str.slice(-1)) return isPalindrome(str.slice(1, -1));
+ return false;
 }
 
 // console.log(isPalindrome('ashley'));
