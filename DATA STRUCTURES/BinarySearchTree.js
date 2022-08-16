@@ -15,29 +15,52 @@ class BinarySearchTree {
   if (this.root === null) {
    this.root = node;
    return this;
-  } else {
-   let current = this.root;
-   while (true) {
-    if (val < current.val) {
-     if (current.left === null) {
-      current.left = node;
-      return this;
-     } else {
-      current = current.left;
-     }
+  }
+  let current = this.root;
+  while (true) {
+   if (val === current.val) return undefined;
+   if (val < current.val) {
+    if (current.left === null) {
+     current.left = node;
+     return this;
     }
-    else if (val > current.val) {
-     if (current.right === null) {
-      current.right = node;
-      return this;
-     } else {
-      current = current.right;
-     }
+    current = current.left;
+   }
+   else if (val > current.val) {
+    if (current.right === null) {
+     current.right = node;
+     return this;
     }
+    current = current.right;
    }
   }
  }
 
+ insert2(val) {
+  let node = new Node(val);
+  if (this.root === null) {
+   this.root = node;
+   return this;
+  }
+  let current = this.root;
+  while (true) {
+   if (val === current.val) return undefined;
+   if (val < current.left) {
+    if (current.left === null) {
+     current.left = node;
+     return this;
+    }
+    current = current.left;
+   }
+   else if (val > current.right) {
+    if (current.right === null) {
+     current.right = node;
+     return this;
+    }
+    current = current.right;
+   }
+  }
+ }
 
 
 }

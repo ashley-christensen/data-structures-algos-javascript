@@ -171,3 +171,32 @@ function isPal(str) {
 }
 
 // console.log(isPal('tacocatt'));
+
+// linearSearchRecursive
+//This function should accept an array and value and return the index at which the value exists or - 1 if the value can not be found.Do not use indexOf to solve this! This function should use recursion.;
+function linearSearchRecursive(arr, val) {
+ let i = 0;
+ function helper(helperInput) {
+  if (helperInput[0] === val) return;
+  i++;
+  return helper(helperInput.slice(1), val);
+
+ }
+ helper(arr);
+ return i;
+}
+
+// console.log(linearSearchRecursive([0, 1, 2, 3, 4], 4));
+
+
+
+function recursiveBinarySearch(arr, n) {
+ if (!arr.length) return -1;
+ let mid = Math.floor((arr.length) / 2);
+
+ if (n === arr[mid]) return mid;
+ if (n > arr[mid]) return recursiveBinarySearch(arr.slice(mid + 1), n);
+ if (n < arr[mid]) return recursiveBinarySearch(arr.slice(0, mid), n);
+
+}
+console.log(recursiveBinarySearch([0, 1, 2, 3, 4, 5], 7));
