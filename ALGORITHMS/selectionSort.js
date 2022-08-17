@@ -21,13 +21,11 @@ const swap = (arr, idx1, idx2) => {
 
 
 function selectionSort(arr) {
-
- for (let i = 0; i < arr.length; i++) {
+ let n = arr.length;
+ for (let i = 0; i < n; i++) {
   let lowest = i;
-  for (let j = i + 1; j < arr.length; j++) {
-   if (arr[j] < arr[lowest]) {
-    lowest = j;
-   }
+  for (let j = i + 1; j < n; j++) {
+   if (arr[j] < arr[lowest]) lowest = j;
   }
   if (i !== lowest) {
    swap(arr, i, lowest);
@@ -38,3 +36,5 @@ function selectionSort(arr) {
 }
 
 console.log(selectionSort([1, 2, 19, 18, 17]));
+
+function; 
