@@ -99,10 +99,12 @@ tree.insert(13);
 console.log(tree.find(7));
 
 //Breadth First Search... siblings BEFORE children
-//1. helper Q (push-to tail, shift-from head) and ARR return list of values
-//2. root -> Q
+//DeQ means remove from head => shift(), add to Q means add to tail => push()
+// push to ARR-visited means arr.push()
+//1. vars: HelperQ, arr-visted
+//2. root --> Q
 //3. Loop while Q has values
-//-DeQ node from front of Q and push into ARR
-//if DeQed has left, add to Q
-//if DeQed has right, add to Q
-//4. return ARR (full of sibling values first, and then children)
+//-DeQ from Q and push to ARR-visited
+// DeQed.left? --> Q
+// DeQed.right? --> Q
+//4. return ARR-visited (full of sibling values first, and then children)

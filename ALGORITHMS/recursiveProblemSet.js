@@ -189,14 +189,55 @@ function linearSearchRecursive(arr, val) {
 // console.log(linearSearchRecursive([0, 1, 2, 3, 4], 4));
 
 
-
-function recursiveBinarySearch(arr, n) {
- if (!arr.length) return -1;
- let mid = Math.floor((arr.length) / 2);
-
- if (n === arr[mid]) return mid;
- if (n > arr[mid]) return recursiveBinarySearch(arr.slice(mid + 1), n);
- if (n < arr[mid]) return recursiveBinarySearch(arr.slice(0, mid), n);
-
+function capWords(arr) {
+ let result = [];
+ function helper(helperInput) {
+  if (helperInput.length === 0) return;
+  result.push(helperInput[0].charAt(0).toUpperCase() + helperInput[0].slice(1));
+  helper(helperInput.slice(1));
+ }
+ helper(arr);
+ return result;
 }
-console.log(recursiveBinarySearch([0, 1, 2, 3, 4, 5], 7));
+
+//['dog', 'cat', 'House'] = ['Dog', 'Cat', 'House']
+// console.log(capWords(['hello', 'whatsup']));
+
+function binaryS(arr, v) {
+ let left = 0;
+ let right = arr.length - 1;
+
+
+ while (left <= right) {
+  let mid = Math.floor((left + right) / 2);
+  let current = arr[mid];
+  if (v === current) {
+   return mid;
+  }
+  else if (v < current) {
+   right = mid - 1;
+  }
+  else {
+   left = mid + 1;
+  }
+ }
+
+ return -1;
+}
+console.log(binaryS([0, 1, 2, 3, 4], 4));
+
+
+//To study to understand recursion
+function BinarySearchRec(arr, start, end, n) {
+ if (start > end) return -1;
+ let mid = Math.floor((start + end) / 2);
+
+ if (arr[mid] === n) return mid;
+ if (n > arr[mid]) {
+  return BinarySearchRec(arr, mid + 1, end, n);
+ } else if (n < arr[mid]) {
+  return BinarySearchRec(arr, start, mid - 1, n);
+ }
+}
+// let arr = [0, 1, 2, 3, 4, 5];
+// console.log(BinarySearchRec(arr, 0, arr.length - 1, 2));
