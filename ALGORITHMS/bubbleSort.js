@@ -34,3 +34,24 @@ function bubbleSort(arr) {
 
 };
 // console.log(bubbleSort([3, 2, 1, 0, 4]));
+
+//MOST WORKABLE SOLUTION
+function swap2(arr, idx1, idx2) {
+ [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+}
+function bubbleSort3(arr) {
+ let n = arr.length;
+ let noSwap = true;
+ for (let i = 0; i < n - 1; i++) {
+  for (let j = 0; j <= n - 1 - i; j++) {
+   if (arr[j] > arr[j + 1]) {
+    swap(arr, j, j + 1);
+    noSwap = false;
+   };
+  }
+  if (noSwap) break;
+ }
+ return arr;
+}
+
+console.log(bubbleSort3([3, 4, 5, 1, 2]));
