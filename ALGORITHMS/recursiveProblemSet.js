@@ -224,7 +224,7 @@ function binaryS(arr, v) {
 
  return -1;
 }
-console.log(binaryS([0, 1, 2, 3, 4], 4));
+// console.log(binaryS([0, 1, 2, 3, 4], 4));
 
 
 //To study to understand recursion
@@ -241,3 +241,46 @@ function BinarySearchRec(arr, start, end, n) {
 }
 // let arr = [0, 1, 2, 3, 4, 5];
 // console.log(BinarySearchRec(arr, 0, arr.length - 1, 2));
+
+function powr(base, exp) {
+ if (exp <= 0) return 1;
+ return base * powr(base, exp - 1);
+
+}
+// console.log(powr(2, 3));
+
+function proddOfArr(arr) {
+ if (arr.length === 0) return 1;
+ return arr[0] * prodOfArray(arr.slice(1));
+}
+// console.log(proddOfArr([1, 2, 3]));
+
+function reversee(str) {
+ if (str.length === 0) return str;
+ return reverse(str.slice(1)) + str[0];
+}
+// console.log(reversee('ashley'));
+
+function recRangee(num) {
+ if (num === 1) return num;
+ return num + recRangee(num - 1);
+}
+// console.log(recRangee(3));
+
+function recPal(str) {
+ if (str.length === 1) return true;
+ if (str.length === 2) return (str[0] === str[1]);
+ if (str[0] === str.slice(-1)) {
+  return recPal(str.slice(1, -1));
+ }
+ return false;
+
+}
+
+function sRecursive(arr, callback) {
+
+ if (arr.length === 0) return false;
+
+ return callback(arr[0]);
+ return true;
+}

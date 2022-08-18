@@ -69,4 +69,5 @@ function selSort(arr) {
  return arr;
 }
 
-console.log(selSort([6, 5, 4, 8, 9, 0]));
+// console.log(selSort([6, 5, 4, 8, 9, 0]));
+

@@ -28,10 +28,8 @@ class Stack {
    this.first = node;
    this.last = node;
   } else {
-   let current = this.first;
+   node.next = this.first;
    this.first = node;
-   node.next = current;
-
   }
   return ++this.size;
 
@@ -54,4 +52,4 @@ let stack = new Stack();
 stack.addToHead('added to head first');
 stack.addToHead('added to head 2nd');
 stack.addToHead('added to head third');
-console.log(stack.removeFromHead());
+console.log(stack);

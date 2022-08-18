@@ -10,6 +10,7 @@ class BinarySearchTree {
  constructor() {
   this.root = null;
  }
+
  insert(val) {
   let node = new Node(val);
   if (this.root === null) {
@@ -53,23 +54,6 @@ class BinarySearchTree {
   return false;
  }
 
- contains2(val) {
-  if (this.root === null) return false;
-  let current = this.root;
-  let found = false;
-
-  while (current && !found) {
-   if (val < current.val) {
-    current = current.left;
-   }
-   else if (val > current.val) {
-    current = current.right;
-   } else {
-    return true;
-   }
-  }
-  return false;
- }
 
  find(val) {
   if (this.root === null) return undefined;
@@ -89,14 +73,20 @@ class BinarySearchTree {
   if (!found) return undefined;
   return current;
  }
+
 }
 
 
 let tree = new BinarySearchTree();
-tree.insert(12);
-tree.insert(6);
-tree.insert(13);
-console.log(tree.find(7));
+tree.insert4(12);
+tree.insert4(6);
+tree.insert4(13);
+tree.insert4(10);
+console.log(tree.find(10));
+
+
+
+
 
 //Breadth First Search... siblings BEFORE children
 //DeQ means remove from head => shift(), add to Q means add to tail => push()
