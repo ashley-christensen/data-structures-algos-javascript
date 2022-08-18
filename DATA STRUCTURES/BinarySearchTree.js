@@ -107,8 +107,8 @@ class BinarySearchTree {
    current = this.root;
 
   function traverse(node) {
-   if (node.left) traverse(node.left);
-   if (node.right) traverse(node.right);
+   node.right && traverse(node.left);
+   node.right && traverse(node.right);
    data.push(node.val);
   }
   traverse(current);
@@ -119,9 +119,9 @@ class BinarySearchTree {
   let data = [],
    current = this.root;
   function traverse(node) {
-   if (node.left) traverse(node.left);
+   node.left && traverse(node.left);
    data.push(node.val);
-   if (node.right) traverse(node.right);
+   node.left && traverse(node.right);
   }
   traverse(current);
   return data;
@@ -136,7 +136,7 @@ tree.insert(3);
 tree.insert(8);
 tree.insert(15);
 tree.insert(20);
-console.log(tree.DFSPreOrder());
+// console.log(tree.DFSPreOrder());
 // console.log(tree.DFSPostOrder());
 // console.log(tree.DFSInOrder());
 
