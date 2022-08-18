@@ -36,6 +36,7 @@ class BinarySearchTree {
    }
   }
  }
+
  contains(val) {
   if (this.root === null) return false;
 
@@ -68,21 +69,36 @@ class BinarySearchTree {
    } else {
     found = true;
    }
-
   }
   if (!found) return undefined;
   return current;
  }
 
+ BFS() {
+  let node = this.root,
+   data = [],
+   queue = [];
+
+  queue.push(node);
+
+  while (queue.length) {
+   node = queue.shift();
+   data.push(node.val);//only place where data is being inserted to data
+   if (node.left) queue.push(node.left);
+   if (node.right) queue.push(node.right);
+  }
+  return data;
+ }
 }
 
 
 let tree = new BinarySearchTree();
-tree.insert4(12);
-tree.insert4(6);
-tree.insert4(13);
-tree.insert4(10);
-console.log(tree.find(10));
+tree.insert(12);
+tree.insert(6);
+tree.insert(13);
+tree.insert(10);
+console.log(tree.BFS());
+
 
 
 
