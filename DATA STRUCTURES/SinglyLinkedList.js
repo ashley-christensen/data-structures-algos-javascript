@@ -145,11 +145,3 @@ console.log(list);
 
 
 
-// remove from tail
-//removefromhead2
-
-
-// remove from tail
-// while current.next, check for length of 1
-//removefromhead2
-//after decreasing length, if the last item was just taken out, tail needs to be set to null

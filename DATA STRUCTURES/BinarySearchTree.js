@@ -126,6 +126,7 @@ class BinarySearchTree {
   traverse(current);
   return data;
  }
+
 }
 
 
