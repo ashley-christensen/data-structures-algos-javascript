@@ -93,10 +93,10 @@ class BinarySearchTree {
   let current = this.root,
    data = [];
 
-  function traverse(nodeInput) {
-   data.push(nodeInput.val);
-   if (nodeInput.left) traverse(nodeInput.left);//does all the lefts first
-   if (nodeInput.right) traverse(nodeInput.right);
+  function traverse(node) {
+   data.push(node.val);
+   if (node.left) traverse(node.left);//does all the lefts first
+   if (node.right) traverse(node.right);
   }
   traverse(current);//starts at root
   return data;
@@ -114,15 +114,31 @@ class BinarySearchTree {
   traverse(current);
   return data;
  }
+
+ DFSInOrder() {
+  let data = [],
+   current = this.root;
+  function traverse(node) {
+   if (node.left) traverse(node.left);
+   data.push(node.val);
+   if (node.right) traverse(node.right);
+  }
+  traverse(current);
+  return data;
+ }
 }
 
 
 let tree = new BinarySearchTree();
-tree.insert(12);
-tree.insert(6);
-tree.insert(13);
 tree.insert(10);
+tree.insert(6);
+tree.insert(3);
+tree.insert(8);
+tree.insert(15);
+tree.insert(20);
 console.log(tree.DFSPreOrder());
+// console.log(tree.DFSPostOrder());
+// console.log(tree.DFSInOrder());
 
 
 
