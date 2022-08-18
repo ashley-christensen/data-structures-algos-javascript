@@ -98,7 +98,20 @@ class BinarySearchTree {
    if (nodeInput.left) traverse(nodeInput.left);//does all the lefts first
    if (nodeInput.right) traverse(nodeInput.right);
   }
-  helper(current);//starts at root
+  traverse(current);//starts at root
+  return data;
+ }
+
+ DFSPostOrder() {
+  let data = [],
+   current = this.root;
+
+  function traverse(node) {
+   if (node.left) traverse(node.left);
+   if (node.right) traverse(node.right);
+   data.push(node.val);
+  }
+  traverse(current);
   return data;
  }
 }
@@ -133,3 +146,10 @@ console.log(tree.DFSPreOrder());
 //push node into data array
 //if node has left, call helper on left
 //if node hasr ight, call helper on right
+
+//DFS PostOrder = All left, all right, Node
+//2 vars, current, and data
+//helper function takes in node
+//if node has left, helper on left
+//if node has right, helper on right
+//push node value into data array
