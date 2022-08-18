@@ -78,4 +78,28 @@ function binaryyS(arr, val) {
  }
  return -1;
 }
-console.log(binaryyS([0, 1, 2, 3, 4, 5, 6, 7], 3));
+// console.log(binaryyS([0, 1, 2, 3, 4, 5, 6, 7], 3));
+
+function binarySearchhh(arr, el) {
+ let start = 0;
+ let end = arr.length - 1;
+
+ while (start < end) {
+  let mid = Math.floor((start + end) / 2);
+  let temp = arr[mid];
+
+  if (el < temp) {
+   end = mid - 1;
+  }
+  else if (el > temp) {
+   start = mid + 1;
+  }
+  else if (el === temp) {
+   return mid;
+  } else {
+   return -1;
+  }
+ }
+
+}
+console.log(binarySearchhh([0, 1, 2, 3, 4, 5, 6, 7], 5));

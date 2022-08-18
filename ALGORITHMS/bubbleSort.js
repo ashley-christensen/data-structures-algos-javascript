@@ -56,3 +56,4 @@ function bubbleSort3(arr) {
 
 // console.log(bubbleSort3([3, 4, 5, 1, 2]));
 
+//bubble sort 

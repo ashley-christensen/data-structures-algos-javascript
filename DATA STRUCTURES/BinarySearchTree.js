@@ -80,13 +80,25 @@ class BinarySearchTree {
    queue = [];
 
   queue.push(node);
-
   while (queue.length) {
    node = queue.shift();
    data.push(node.val);//only place where data is being inserted to data
    if (node.left) queue.push(node.left);
    if (node.right) queue.push(node.right);
   }
+  return data;
+ }
+
+ DFSPreOrder() {
+  let current = this.root,
+   data = [];
+
+  function traverse(nodeInput) {
+   data.push(nodeInput.val);
+   if (nodeInput.left) traverse(nodeInput.left);//does all the lefts first
+   if (nodeInput.right) traverse(nodeInput.right);
+  }
+  helper(current);//starts at root
   return data;
  }
 }
@@ -97,7 +109,7 @@ tree.insert(12);
 tree.insert(6);
 tree.insert(13);
 tree.insert(10);
-console.log(tree.BFS());
+console.log(tree.DFSPreOrder());
 
 
 
@@ -114,3 +126,10 @@ console.log(tree.BFS());
 // DeQed.left? --> Q
 // DeQed.right? --> Q
 //4. return ARR-visited (full of sibling values first, and then children)
+
+//DFS PreOrder = Node, entire left, entire right
+// 2 variables, data and current
+//helper function accepts node
+//push node into data array
+//if node has left, call helper on left
+//if node hasr ight, call helper on right
