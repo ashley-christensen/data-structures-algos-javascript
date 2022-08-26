@@ -90,7 +90,39 @@ class DoublyLinkedList {
   }
   return current;
  }
- set(idx, val) { }
- insert() { }
- remove() { }
+ set(idx, val) {
+  if (idx < 0 || idx >= this.length) return undefined;
+  let found = this.get(idx);
+  if (found) {
+   found.val = val;
+  }
+ }
+
+ insert(idx, val) {
+  let node = new Node(val);
+  if (idx <= 0 || idx >= this.length) return false;
+  if (idx === 0) return !!this.addToHead(val);
+  if (idx === this.length - 1) return !!this.addToTail(val);
+
+  let before = this.get(idx - 1);
+  let after = before.next;
+  before.next = node, node.prev = before;
+  after.prev = node, node.next = after;
+  this.length++;
+  return true;
+ }
+
+ remove(idx) {
+  if (idx < 0 || idx >= this.length) return undefined;
+  if (idx === 0) return this.removeFromHead();
+  if (idx === this.length - 1) return this.removeFromTail;
+
+  let current = this.get(idx);
+  let before = current.prev;
+  let after = current.next;
+  before.next = after, after.prev = before;
+  current.next = null, current.prev = null;
+  this.length--;
+  return current;
+ }
 }
