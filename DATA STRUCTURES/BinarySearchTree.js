@@ -19,7 +19,7 @@ class BinarySearchTree {
   }
   let current = this.root;
   while (true) {
-   if (val === current.val) return undefined;
+   if (val === current.val) return undefined;//no duplicates wanted
    if (val < current.val) {
     if (current.left === null) {
      current.left = node;
@@ -107,7 +107,7 @@ class BinarySearchTree {
    current = this.root;
 
   function traverse(node) {
-   node.right && traverse(node.left);
+   node.left && traverse(node.left);
    node.right && traverse(node.right);
    data.push(node.val);
   }
