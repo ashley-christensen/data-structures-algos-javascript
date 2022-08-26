@@ -76,7 +76,35 @@ class LinkedList {
   }
   return current;
  }
- set() { }
- insert() { }
- remove() { }
+ set(idx, val) {
+  let found = this.get(idx);
+  if (found) {
+   found.val = val;
+   return true;
+  }
+  return false;
+ }
+ insert(idx, val) {
+  let node = new Node(val);
+  if (idx < 0 || idx >= this.length) return false;
+  if (idx === 0) return !!this.addToHead(val);
+  if (idx === this.length - 1) return !!this.addToTail(val);
+
+  let before = this.get(idx - 1);
+  let after = before.next;
+  before.next = node;
+  node.next = after;
+  this.length++;
+  return true;
+ }
+ remove(idx) {
+  if (idx < 0 || idx >= this.length) return undefined;
+  if (idx === 0) return this.removeFromHead();
+  if (idx === this.length - 1) return this.removeFromTail();
+
+  let before = this.get(idx - 1);
+  let current = before.next;
+  before.next = current.next;//memorize this line for SLL remove(idx)
+  current.next = null;
+ }
 }
