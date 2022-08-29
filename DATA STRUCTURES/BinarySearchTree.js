@@ -82,7 +82,7 @@ class BinarySearchTree {
   queue.push(node);
   while (queue.length) {
    node = queue.shift();
-   data.push(node.val);//only place where data is being inserted to data
+   data.push(node.val);//only place where data is being inserted to data so use val
    if (node.left) queue.push(node.left);
    if (node.right) queue.push(node.right);
   }

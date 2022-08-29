@@ -71,3 +71,19 @@ function selSort(arr) {
 
 // console.log(selSort([6, 5, 4, 8, 9, 0]));
 
+
+function selec(arr) {
+ let n = arr.length;
+ for (let i = 0; i < n; i++) {
+  let lowest = i;
+  for (let j = i + 1; j < n; j++) {
+   if (arr[j] < arr[lowest]) lowest = j;
+  }
+  if (i !== lowest) {
+   swap(arr, i, lowest);
+  }
+ }
+ return arr;
+}
+
+// console.log(selec([5, 4, 3, 6, 2]));
