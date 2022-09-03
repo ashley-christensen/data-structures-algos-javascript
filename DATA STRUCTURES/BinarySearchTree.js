@@ -127,6 +127,39 @@ class BinarySearchTree {
   return data;
  }
 
+
+
+
+
+
+
+ DFSPreOrderr() {
+  let data = [];
+  let current = this.root;
+
+  function traverse(node) {
+   data.push(node);
+   node.left && traverse(node.left);
+   node.right && traverse(node.right);
+  }
+  traverse(current);
+  return data;
+ }
+
+ BFS2() {
+  let data = [];
+  let queue = [];
+  let node = this.root;
+
+  queue.push(node);
+  while (queue.length) {
+   node = queue.shift();
+   data.push(node.val);
+   node.left && data.push(node.left);
+   node.right && data.push(node.right);
+  }
+  return data;
+ }
 }
 
 
