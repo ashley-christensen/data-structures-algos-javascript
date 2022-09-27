@@ -1,4 +1,4 @@
-class Heap {
+class MaxBinaryHeap {
  constructor() {
   this.values = [];
  }
@@ -7,41 +7,54 @@ class Heap {
  bubbleUp() {
   let index = this.values.length - 1;
   let element = this.values[index];
-  while (index > 0) {//only need parentIndex to get to 0
+  while (index > 0) {//if index is 0, nothing to swap with
    let parentIndex = Math.floor((index - 1) / 2);
    let parent = this.values[parentIndex];
    if (element <= parent) break;
    this.values[parentIndex] = element;
    this.values[index] = parent;
-   index = parentIndex;
+   index = parentIndex;//NEED to update index, or it'll be the same each time!
   }
  }
  insert(val) {
   this.values.push(val);
   this.bubbleUp();
  }
+
  sinkDown() {
-  let idx = 0;//define idx0, length, elatidx0
-  let length = this.values.length;
-  let element = this.values[0];
-  while (true) {//childindeces and el=arr[childindeces]
-   let leftChildIdx = 2 * idx + 1;
-   let rightChildIdx = 2 * idx + 2;
-   let leftChild, rightChild;//must check bounds
-   let swap = null;//keeps track of position we are going to swap with
+  let index = 0;
+  const length = this.values.length;
+  const element = this.values[0]; //always will be this VALUE
+
+  while (true) {
+   let leftChildIdx = 2 * index + 1;
+   let rightChildIdx = 2 * index + 2;
+
+   let leftChild, rightChild; //we don't know if they exist yet
+   let swap = null;
+   //if left child is inbounds
    if (leftChildIdx < length) {
-    leftChild = this.values[leftChildIdx];
-    if (leftChild > element) {//easier to have both in variable
-     swap = leftChildIdx;//variable keeps TRACK of position swapping with, reset to null each time thru
+    leftChild = this.values[leftChildIdx]; //have left child in variable, compare with element
+    if (leftChild > element) {
+     swap = leftChildIdx;
     }
    }
-
-   if (swap === null) break;
-
-
+   if (rightChildIdx < length) {
+    rightChild = this.values[rightChildIdx];
+    if (
+     swap === null && rightChild > element || //left side was not swapped
+     swap !== null && rightChild > leftChild //left side was swapped
+    ) {
+     swap = rightChildIdx;
+    }
+   }
+   if (swap === null) break;//at some point we swap=true, swap below
+   this.values[index] = this.values[swap]; //index we chose to swap with 
+   this.values[swap] = element;
+   index = swap; //now looking at children of index that corresponds
   }
-
  }
+
  extractMax() {
   //take first element, remove, replace with last element
   let max = this.values[0];
@@ -51,31 +64,14 @@ class Heap {
   return max;
  }
 
- insert2(val) {
-  this.values.push(val);
-  this.bubbleUp();
- }
-
- bubbleUp2() {
-  let index = this.values.length - 1;
-  let element = this.values[index];
-  while (index > 0) {
-   let parentIndex = Math.floor((index - 1) / 2);
-   let parent = this.values[parentIndex];
-   if (parent >= element) break;
-   this.values[parentIndex] = element;
-   this.values[index] = parent;
-   index = parentIndex;
-  }
- }
 
 
 }
 
-let heap = new Heap();
-heap.insert(4);
-heap.insert(444);
-heap.insert(5);
-heap.insert(666);
-heap.insert(44444);
+let heap = new MaxBinaryHeap();
+heap.insert(55);
+heap.insert(39);
+heap.insert(42);
+heap.insert(18);
+console.log(heap.extractMax());
 console.log(heap);
